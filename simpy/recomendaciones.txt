@@ -55,3 +55,9 @@ Recomendaciones para mejorar el sistema
 6. Visualización de resultados
 
     Graficar resultados de simulación
+
+-------------------------------------------------------------------------------
+Cantidades recomendadas
+
+doctores: 3
+evaluadores: 2
