@@ -1,0 +1,57 @@
+Observaciones / Potenciales mejoras
+
+    Paciente-5 (prioridad 2) es atendido muy tarde (desde minuto 22.11 hasta 195.50). Hay varias razones posibles:
+
+        La cola estaba saturada.
+
+        Se priorizaron todos los de prioridad 1 antes.
+
+        Es probable que ese paciente haya "quedado rezagado" por su posición inicial, aunque tenía alta prioridad.
+
+    Hay mucha congestión entre los minutos 100–200. A pesar de eso, el sistema maneja bien las prioridades, pero:
+
+        Algunos pacientes de prioridad 2 y 3 también esperan más de lo ideal.
+
+    El sistema funciona bien para prioridades extremas (1 y 5), pero para prioridades medias (2 y 3) algunos pacientes esperan mucho. Esto es esperado, pero se podría mejorar con:
+
+        Más médicos.
+
+        Tiempo máximo de espera por prioridad.
+--------------------------------------------------------------------
+Recomendaciones para mejorar el sistema
+
+1. Agregar múltiples médicos o personal de atención
+
+2. Implementar una lógica de escalamiento por tiempo de espera
+
+    Si un paciente de prioridad 2, 3 o 4 lleva esperando más de cierto umbral, elevar su prioridad temporalmente.
+
+3. Establecer un umbral máximo de espera para prioridades 1 y 2
+
+    Pacientes con prioridad 1 no deberían esperar más de 15 minutos.
+
+    Si están esperando más:
+
+        Forzar su atención siguiente.
+
+        Registrar una alerta en la simulación.
+
+4. Clasificar pacientes no solo por prioridad, sino por tiempo acumulado de espera
+
+    En lugar de solo usar heapq con (prioridad, timestamp), usar:
+
+    (prioridad, tiempo_de_espera, timestamp, paciente_id)
+
+    Se prioriza entre pacientes con la misma prioridad al que lleva más esperando.
+
+5. Revisión de política de evaluación
+
+    En algunos casos, la evaluación tarda mucho tras la llegada.
+
+        Ejemplo: Paciente-8 espera 5 minutos para ser evaluado.
+
+    Más evaluadores disponibles en paralelo para agilizar esta etapa.
+
+6. Visualización de resultados
+
+    Graficar resultados de simulación
